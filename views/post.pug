@@ -5,10 +5,15 @@ html(lang="en")
         meta(http-equiv="X-UA-Compatible", content="IE=edge")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         title Document
+        link(rel="stylesheet", href="css/styles.css")
     body
-        if(status)
+        section.createArea 
+            form(action="/postCreate", method="get")
+                button.createArea__btn(type="submit") 추가하기
+        if (status)
             each data in list 
-                h2 #{data.title}
+                form(action=`/postDetail/${data._id}`)
+                    input(type="submit", value=data.title)
                 h4 #{data.description}
                 hr
         else 
